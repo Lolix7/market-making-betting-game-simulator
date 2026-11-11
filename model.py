@@ -39,8 +39,26 @@ def pay_per_reroll_die_game(sides, reroll_cost):
             t_star = t
     return dict(threshold = t_star, value = V_star)
 
-# Step 4 - red_black_card_game_value (not yet solved)
-# TODO: implement
+# Step 4 - red_black_card_game_value
+def red_black_card_game_value(num_red, num_black):
+    # TODO: return {'value': expected payout under optimal stopping, 'stop_now': whether to stop immediately}.
+    
+    def C(r,b):
+        if r + b == 0:
+            return 0
+        return r/(r+b)*(1+V(r-1,b)) + b/(r+b)*(-1 + V(r, b-1))
+    def V(r,b):
+        if r == 0 and b == 0:
+            return 0
+        elif r == 0:
+            return 0
+        elif b == 0:
+            return r
+        else:
+            return max(0, C(r,b))
+    value = V(num_red, num_black)
+    cont = C(num_red, num_black)
+    return dict(value=value, stop_now = (cont<=0.0))
 
 # Step 5 - make_quotes (not yet solved)
 # TODO: implement
