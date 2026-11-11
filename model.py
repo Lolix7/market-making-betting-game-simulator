@@ -25,8 +25,19 @@ def one_reroll_die_value(sides):
     value = expected_value(values, probs)
     return dict(value = value, reroll_faces=reroll)
 
-# Step 3 - pay_per_reroll_die_game (not yet solved)
-# TODO: implement
+# Step 3 - pay_per_reroll_die_game
+def pay_per_reroll_die_game(sides, reroll_cost):
+    # TODO: return {'threshold': t, 'value': V} for the pay-per-reroll die game under the optimal threshold policy.
+    values = []
+    V_star,t_star = 0, 0
+
+    for t in range(1, sides+1):
+        value = (t+sides)/2 - (t-1)/(sides-t+1) * reroll_cost
+        values.append(value)
+        if value > V_star:
+            V_star = value
+            t_star = t
+    return dict(threshold = t_star, value = V_star)
 
 # Step 4 - red_black_card_game_value (not yet solved)
 # TODO: implement
