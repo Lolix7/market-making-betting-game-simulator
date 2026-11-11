@@ -60,8 +60,10 @@ def red_black_card_game_value(num_red, num_black):
     cont = C(num_red, num_black)
     return dict(value=value, stop_now = (cont<=0.0))
 
-# Step 5 - make_quotes (not yet solved)
-# TODO: implement
+# Step 5 - make_quotes
+def make_quotes(fair_value, spread_width):
+    # TODO: return a dict with 'bid' and 'ask' symmetric around fair_value with total width spread_width
+    return dict(bid = fair_value - spread_width/2, ask = fair_value + spread_width/2)
 
 # Step 6 - execute_trade (not yet solved)
 # TODO: implement
