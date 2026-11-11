@@ -93,8 +93,11 @@ def adverse_selection_loss(fair_value, bid, ask, informed_values, informed_proba
     probs = np.array(informed_probabilities)
     return expected_value(np.maximum(val-ask, 0), probs) + expected_value(np.maximum(bid-val, 0), probs)
 
-# Step 9 - uncertainty_spread (not yet solved)
-# TODO: implement
+# Step 9 - uncertainty_spread
+def uncertainty_spread(base_spread, uncertainty):
+    """Return a spread width >= base_spread that grows with uncertainty."""
+    # TODO: choose a spread width that is at least base_spread and increases with uncertainty.
+    return base_spread + uncertainty
 
 # Step 10 - inventory_skewed_quotes (not yet solved)
 # TODO: implement
