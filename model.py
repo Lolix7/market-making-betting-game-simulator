@@ -165,6 +165,12 @@ def run_market_making_episode(true_value, counterparty_sides, initial_fair_value
         'history': history
     }
 
-# Step 14 - summarize_episode_pnls (not yet solved)
-# TODO: implement
+# Step 14 - summarize_episode_pnls
+def summarize_episode_pnls(pnls):
+    # TODO: return a dict with keys 'mean', 'std' (ddof=0), and 'worst' for the given P&L sequence.
+    p =np.array(pnls)
+    mu = np.mean(pnls)
+    std = np.std(pnls)
+    worst = np.min(pnls)
+    return dict(mean = mu, std = std, worst = worst)
 
